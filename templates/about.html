@@ -1,0 +1,296 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="UpYatra - Explore the rich history and culture of Uttar Pradesh with our expert historical tours." />
+    <meta name="keywords" content="Travel, Uttar Pradesh, Historical Tours, Taj Mahal, Agra Fort, Fatehpur Sikri" />
+    <meta name="author" content="UpYatra Team" />
+    <title>About Us | UpYatra - Historical Tours in Uttar Pradesh</title>
+    <link rel="stylesheet" href="{% static 'styles/about.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet" />
+    <style>
+        /* Minimal inline styles for demo, move to about.css in production */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0; padding: 0;
+            background: #f9f9f9;
+            /* Fix color property */
+            color: #41ccb2ff;
+            scroll-behavior: smooth;
+        }
+        header {
+            /* Fix background property to gradient */
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .main-heading {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin: 0;
+        /* Fix background */
+        background: linear-gradient(90deg, #4CAF50, #2196F3);
+        }
+
+        nav {
+            position: relative;
+        }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-list li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .nav-list li a:hover,
+        .nav-list li a:focus,
+        .nav-list li a[aria-current="page"] {
+            color: #ffca28;
+            outline: none;
+        }
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .nav-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        /* Responsive nav */
+        @media (max-width: 768px) {
+            .nav-list {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: #4CAF50, #2196F3;
+                flex-direction: column;
+                width: 200px;
+                display: none;
+                border-radius: 0 0 5px 5px;
+                box-shadow: 0 4px 8px rgba(32, 45, 239, 0.2);
+            }
+            .nav-list.show {
+                display: flex;
+            }
+            .nav-toggle {
+                display: flex;
+            }
+        }
+        main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .hero {
+            position: relative;
+            background: url("{% static 'image/about-hero.jpg' %}") center/cover no-repeat;
+            height: 300px;
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 77, 64, 0.6);
+            border-radius: 10px;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+        .hero-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+        section {
+            margin-bottom: 3rem;
+        }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #004d40;
+        }
+        ul {
+            list-style: disc inside;
+            line-height: 1.6;
+        }
+        .aboutme-content {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .aboutme-img {
+            flex: 1 1 300px;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.88);
+        }
+        .aboutme-text {
+            flex: 2 1 400px;
+        }
+        .choose-us ul li {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        footer {
+            background: #004d40;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 0.9rem;
+        }
+        /* Button style */
+        .btn-primary {
+            display: inline-block;
+            background: #ffca28;
+            color: #004d40;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background: #f9a825;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="main-heading">UpYatra</h1>
+        <nav role="navigation" aria-label="Primary Navigation">
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-list">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-list" id="nav-list">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}" aria-current="page">About Us</a></li>
+                <li><a href="{% url 'packages' %}">Packages</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" role="banner" aria-label="About UpYatra">
+            <div class="hero-content">
+                <h2>Discover the Heart of Uttar Pradesh</h2>
+                <p>Join us on a journey through history, culture, and unforgettable experiences.</p>
+                <a href="{% url 'packages' %}" class="btn-primary">Explore Our Packages</a>
+            </div>
+        </section>
+
+        <section class="aboutme" aria-labelledby="team-heading">
+            <div class="aboutme-content">
+                <img src="{% static 'image/about.jpg' %}" alt="Team members of UpYatra smiling" class="aboutme-img" />
+                <div class="aboutme-text">
+                    <h2 id="team-heading">Meet Our Team</h2>
+                    <p>Welcome to UpYatra! We are a travel company dedicated to making your journeys memorable and hassle-free. Our team is passionate about helping you explore the rich history and culture of Uttar Pradesh.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission" aria-labelledby="mission-heading">
+            <h2 id="mission-heading">Our Mission</h2>
+            <p>At UpYatra, our mission is to immerse travelers in the rich tapestry of Uttar Pradesh's history and culture. We provide exceptional historical tour experiences that showcase magnificent monuments and heritage sites, fostering a deeper understanding of their significance.</p>
+        </section>
+
+        <section class="choose-us" aria-labelledby="chooseus-heading">
+            <h2 id="chooseus-heading">Why Choose Us?</h2>
+            <ul>
+                <li>Expert Knowledge of Uttar Pradesh's History</li>
+                <li>Curated Historical Experiences</li>
+                <li>Personalized Itineraries</li>
+                <li>Sustainable and Responsible Tourism</li>
+                <li>Exceptional Customer Service</li>
+            </ul>
+            <p>Choose UpYatra for your historical tours in Uttar Pradesh, and embark on a journey through time that will enrich your understanding of India's incredible heritage!</p>
+        </section>
+
+        <section class="historical-tours" aria-labelledby="tours-heading">
+            <h2 id="tours-heading">Our Historical Tours</h2>
+            <p>We specialize in tours to some of the most iconic sites in Uttar Pradesh, designed for history enthusiasts and curious travelers alike. Highlights include:</p>
+            <ul>
+                <li><strong>The Taj Mahal:</strong> Discover the love story behind this magnificent monument and its architectural brilliance.</li>
+                <li><strong>Agra Fort:</strong> Explore the grandeur of this UNESCO World Heritage Site and learn about its historical significance.</li>
+                <li><strong>Fatehpur Sikri:</strong> Step into the past at this ancient city, once the capital of the Mughal Empire.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 UpYatra. All rights reserved.</p>
+        <p>Follow us on 
+            <a href="https://facebook.com/upyatra" target="_blank" rel="noopener" style="color:#ffca28;">Facebook</a>, 
+            <a href="https://twitter.com/upyatra" target="_blank" rel="noopener" style="color:#ffca28;">Twitter</a>, and 
+            <a href="https://instagram.com/upyatra" target="_blank" rel="noopener" style="color:#ffca28;">Instagram</a>.
+        </p>
+    </footer>
+
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.getElementById('nav-toggle');
+            const navList = document.getElementById('nav-list');
+
+            navToggle.addEventListener('click', () => {
+                const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+                navToggle.setAttribute('aria-expanded', !expanded);
+                navList.classList.toggle('show');
+            });
+
+            // Keyboard accessibility for nav toggle button
+            navToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navToggle.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+{% load static %}
